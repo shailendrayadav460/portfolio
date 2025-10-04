@@ -1,7 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Github,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
+import emailjs from "emailjs-com";
+import { FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -20,29 +30,48 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Message sent successfully!");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+
+    emailjs
+      .send(
+        "service_m23f7pk",     // <-- EmailJS Service ID
+        "template_i4775c4",    // <-- EmailJS Template ID
+        formData,              // Form data pass hoga
+        "bwgzyfK3ODmI3v781"      // <-- EmailJS Public Key
+      )
+      .then(
+        (result) => {
+          console.log("Email sent:", result.text);
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", subject: "", message: "" });
+        },
+        (error) => {
+          console.log("Error:", error.text);
+          alert("Failed to send message. Try again!");
+        }
+      );
   };
 
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      value: "hello@example.com",
+      value: "shailendrayadaw2004@gmail.com",
       gradient: "from-blue-400 to-cyan-500",
+      link: "mailto:shailendrayadaw2004@gmail.com",
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      value: "+1 (555) 123-4567",
+      value: "+91 9305815719",
       gradient: "from-purple-400 to-pink-500",
+      link: "tel:+919305815719",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Location",
-      value: "New York, USA",
+      value: "Sector-76, Noida",
       gradient: "from-green-400 to-emerald-500",
+      link: "https://www.google.com/maps/search/?api=1&query=Sector+76,+Noida",
     },
   ];
 
@@ -51,16 +80,16 @@ export default function ContactPage() {
       icon: <Github className="w-6 h-6" />,
       name: "Github",
       gradient: "from-gray-700 to-gray-900",
-      url: "https://github.com/",
+      url: "https://github.com/shailendrayadav460",
     },
     {
-      icon: <Linkedin className="w-6 h-6" />,
+      icon: <FaLinkedin className="w-6 h-6" />,
       name: "LinkedIn",
       gradient: "from-blue-500 to-blue-700",
-      url: "https://linkedin.com/",
+      url: "https://linkedin.com/in/shailendra-yadav-5b18aa222?utm",
     },
     {
-      icon: <Twitter className="w-6 h-6" />,
+      icon: <FaTwitter className="w-6 h-6" />,
       name: "Twitter",
       gradient: "from-sky-400 to-blue-500",
       url: "https://twitter.com/",
@@ -77,16 +106,20 @@ export default function ContactPage() {
           </h1>
           <div className="w-32 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto rounded-full mb-6"></div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Have a project in mind? Let's work together to create something amazing!
+            Have a project in mind? Let's work together to create something
+            amazing!
           </p>
         </div>
 
         {/* Contact Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {contactInfo.map((info, index) => (
-            <div
+            <a
               key={index}
-              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl hover:scale-105 transition-all duration-300"
+              href={info.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 block"
             >
               <div
                 className={`w-14 h-14 bg-gradient-to-br ${info.gradient} rounded-xl flex items-center justify-center text-white mb-4`}
@@ -97,7 +130,7 @@ export default function ContactPage() {
                 {info.title}
               </h3>
               <p className="text-gray-600">{info.value}</p>
-            </div>
+            </a>
           ))}
         </div>
 
@@ -121,6 +154,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition"
                     placeholder="John Doe"
+                    required
                   />
                 </div>
 
@@ -135,6 +169,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition"
                     placeholder="john@example.com"
+                    required
                   />
                 </div>
 
@@ -149,22 +184,28 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition"
                     placeholder="Project Inquiry"
+                    required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows="5"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition resize-none"
-                    placeholder="Tell me about your project..."
-                  ></textarea>
-                </div>
+  <label className="block text-sm font-medium text-gray-700 mb-2">
+    Message
+  </label>
+  <textarea
+    name="message"
+    value={formData.message}
+    onChange={handleChange}
+    rows="5"
+    className="w-full px-4 py-3 border border-gray-300 rounded-lg 
+               focus:ring-2 focus:ring-purple-500 focus:border-transparent 
+               outline-none transition resize-none 
+               text-gray-800 placeholder-gray-400"
+    placeholder="Tell me about your project..."
+    required
+  ></textarea>
+</div>
+
 
                 <button
                   type="submit"
@@ -184,7 +225,8 @@ export default function ContactPage() {
               <h3 className="text-2xl font-bold mb-4">Let's Create Together</h3>
               <p className="text-purple-100 leading-relaxed mb-6">
                 I'm always open to discussing new projects, creative ideas, or
-                opportunities to be part of your visions. Feel free to reach out!
+                opportunities to be part of your visions. Feel free to reach
+                out!
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
@@ -221,19 +263,25 @@ export default function ContactPage() {
                     >
                       {social.icon}
                     </div>
-                    <span className="text-gray-700 font-medium">{social.name}</span>
+                    <span className="text-gray-700 font-medium">
+                      {social.name}
+                    </span>
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl shadow-xl h-64 flex items-center justify-center text-white">
-              <div className="text-center">
-                <MapPin className="w-16 h-16 mx-auto mb-4" />
-                <p className="text-xl font-semibold">Based in New York</p>
-                <p className="text-blue-100">Available Worldwide</p>
-              </div>
+            {/* Google Map Embed */}
+            <div className="rounded-2xl shadow-xl overflow-hidden h-64 border border-gray-300">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.925917520975!2d77.3910!3d28.5599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5f7e6a82a8f%3A0x6d916a6c0b09c94a!2sSector%2076%2C%20Noida%2C%20Uttar%20Pradesh%20201304!5e0!3m2!1sen!2sin!4v1696068931234!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>

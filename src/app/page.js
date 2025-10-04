@@ -99,7 +99,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 pt-5 sm:pt-0 lg:px-8 relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse" style={{ animationDelay: "1s" }}></div>
@@ -172,10 +172,10 @@ export default function HomePage() {
               </button>
               <button className="px-8 py-4 bg-white text-gray-800 font-bold rounded-xl shadow-lg hover:shadow-xl border-2 border-purple-200 hover:border-purple-400 transform hover:scale-105 transition-all duration-300">
                 <a
-                  href="/Shailendra_Yadav_CV.pdf"
-                  download
+                  href="/about"
+            
                 >
-                  Download CV
+                  See My Resume
                 </a>
 
               </button>
@@ -207,7 +207,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> 
 
       {/* Projects Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">

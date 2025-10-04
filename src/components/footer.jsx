@@ -12,9 +12,29 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-3">Get In Touch</h3>
             <div className="space-y-2">
-              <p>📧 hello@example.com</p>
-              <p>📱 +1 (555) 123-4567</p>
-              <p>📍 San Francisco, CA</p>
+             <a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=shailendrayadaw2004@gmail.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block hover:text-green-200 transition-colors"
+>
+  📧 shailendrayadaw2004@gmail.com
+</a>
+
+                 <a
+      href="tel:+919305815719"
+      className="block hover:text-blue-200 transition-colors"
+    >
+      📱 +91 93058-15719
+    </a>
+               <a
+      href="https://www.google.com/maps/search/?api=1&query=Sector+76,+Noida"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block hover:text-purple-200 transition-colors"
+    >
+      📍 Sector76, Noida
+    </a>
             </div>
           </div>
 
@@ -39,7 +59,7 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-3">Connect</h3>
             <div className="flex gap-4">
               <a
-                href="https://linkedin.com/in/your-profile"
+                href="https://linkedin.com/in/shailendra-yadav-5b18aa222?utm"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition-colors"
@@ -47,7 +67,7 @@ export default function Footer() {
                 <FaLinkedin size={20} />
               </a>
               <a
-                href="https://github.com/your-username"
+                href="https://github.com/shailendrayadav460"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-green-600 hover:bg-green-700 text-white rounded-full flex items-center justify-center transition-colors"

@@ -10,7 +10,7 @@ export default function HeaderNav() {
 
   const navItems = [
     { id: "", label: "Home" },
-    { id: "about", label: "About" },
+    { id: "about", label: "About me" },
     { id: "project", label: "Project" },
     { id: "contact", label: "Contact" },
   ];
@@ -82,7 +82,7 @@ export default function HeaderNav() {
               {navItems.map((item) => (
                 <li key={item.id}>
                   <Link
-                    href={`/#${item.id}`}
+                    href={`/${item.id}`}
                     onClick={() => handleLinkClick(item.id)}
                     className={`block px-4 py-3 rounded-lg text-lg font-semibold transition-all duration-300 ${
                       activeLink === item.id
