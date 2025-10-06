@@ -15,12 +15,14 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Portfolio of Shailendra",
-  description: "Welcome to my portfolio! I’m Shailendra Yadav, a passionate Full Stack Developer specializing in Next.js, React, and modern web technologies.",
+  description:
+    "Welcome to my portfolio! I’m Shailendra Yadav, a passionate Full Stack Developer specializing in Next.js, React, and modern web technologies.",
   icons: {
-    icon: "/favicon.ico", // public folder ka path
+    icon: "/favicon.ico", // public folder path
     shortcut: "/favicon-32x32.png",
     apple: "/apple-touch-icon.png",
   },
+  manifest: "/site.webmanifest", // ✅ manifest link
 };
 
 export default function RootLayout({ children }) {
@@ -30,8 +32,8 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <HeaderNav />
-         {children}
-         <Footer />
+        {children}
+        <Footer />
       </body>
     </html>
   );
