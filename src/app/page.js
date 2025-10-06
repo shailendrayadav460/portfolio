@@ -52,7 +52,7 @@ export default function HomePage() {
     { name: "MongoDB", color: "bg-emerald-100 text-emerald-700 border-emerald-200" },
     { name: "GitHub", color: "bg-gray-100 text-gray-700 border-gray-200" },
     { name: "JavaScript", color: "bg-yellow-100 text-yellow-700 border-yellow-200" },
-    { name: "TypeScript", color: "bg-indigo-100 text-indigo-700 border-indigo-200" },
+    
   ];
 
   const projects = [
@@ -261,9 +261,9 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { num: "50+", label: "Projects", gradient: "from-blue-500 to-cyan-500" },
-              { num: "30+", label: "Clients", gradient: "from-purple-500 to-pink-500" },
-              { num: "3+", label: "Years", gradient: "from-green-500 to-emerald-500" },
+              { num: "10+", label: "Major Projects", gradient: "from-blue-500 to-cyan-500" },
+              { num: "20+", label: "Minner Projects", gradient: "from-purple-500 to-pink-500" },
+              { num: "6+", label: "Month", gradient: "from-green-500 to-emerald-500" },
               { num: "100%", label: "Satisfaction", gradient: "from-orange-500 to-red-500" },
             ].map((stat, idx) => (
               <div
